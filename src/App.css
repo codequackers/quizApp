@@ -1,5 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat&family=Source+Code+Pro&display=swap');
+
+/*
+    font-family: 'Bebas Neue', cursive;
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-family: 'Source Code Pro', monospace;
+*/
+
+:root{
+  --dark-color: #303030;
+  --light-color: #f8f8f8;
+  --main-color: #1c9dd8;
+  --border-color: #c9c9c9;
+  --line-color: #707070;
+  --box-color: rgba(0,159,227,0.39);
+  --border-box-color: rgba(201,201,201,1);
+  --box-before-color: rgba(242,242,242,1);
+}
+
+body{
+  background: var(--light-color);
+}
+
 .App {
   text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12pt;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  align-items: center;
+  margin: auto;
+  background: var(--light-color);
 }
 
 .App-logo {
@@ -28,11 +62,265 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.myButton{
+  /* border: 1px solid black;
+  border-radius: 5px;
+  font-size: 18px;
+  padding: 1  0px;
+  margin: 20px; */
+  background: rgba(0, 159, 227, 0.5);
+  border: none;
+  font-family: Montserrat;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  margin: 2em 2px;
+}
+
+.hide{
+  visibility: hidden;
+  position: absolute; /* Removes element from DOM flow while hidden */
+}
+
+.show{
+  visibility: visible;
+}
+
+code{
+  font-family: 'Source Code Pro', monospace;
+  color: red;
+}
+
+h1, h2{
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2.5px;
+}
+
+.MainHeader{ 
+  font-size: 40px;
+  border-bottom: 2px solid var(--main-color);
+  width: 150px;
+}
+
+.questionContainer{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  /* border: 1px solid var(--dark-color); */
+  border: 1px solid var(--border-color);
+  border-radius: 1em;
+  background: white;
+  min-width: 600px;
+}
+
+.questionheader{
+  text-align: left;
+  padding: 0.5rem 1rem;
+  margin: 2px 0;
+}
+
+.questiontext{
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.questioninfo{
+  color: var(--dark-color);
+  margin: 1em 0 0 0;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+.answer{
+  border-top: 2px solid var(--border-color);
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.round{
+  border-radius: 0 0 1em 1em;
+}
+
+/* .answer>input{
+  visibility: hidden;
+  position: absolute;
+} */
+
+.selected{
+ /*  color: white;
+  background: var(--main-color); */
+}
+
+label{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feedback{
+  align-self: center;
+  visibility: hidden;
+}
+
+.correct{
+  visibility: visible;
+  color: green;
+}
+
+.incorrect{
+  visibility: visible;
+  color: red;
+}
+
+
+/* Radio inputs */
+input[type=radio] {
+  display: none;
+}
+
+input[type=radio]:checked + label>span>span {
+  visibility:visible;
+}
+
+input[type=radio]:checked + label>span {
+  background-color: var(--box-color);
+}
+
+.outerRadio {
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+  width: 25px;
+  height: 25px;
+  background-color: var(--box-before-color);
+  border: 1px solid var(--border-box-color);
+  border-radius: 15px;
+  margin-right: 1rem;
+}
+
+.innerRadio {
+  /* display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: black;
+  border: 1px solid #000;
+  border-radius: 3px; */
+  visibility: hidden;        
+}
+
+/* Checkbox inputs */
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked + label>span>span {
+  visibility:visible;
+  
+}
+
+input[type=checkbox]:checked + label>span {
+  background-color: var(--box-color);
+}
+
+.outerCheck {
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
+  width: 25px;
+  height: 25px;
+  background-color: var(--box-before-color);
+  border: 1px solid var(--border-box-color);
+  border-radius: 3px;
+  
+  margin-right: 1rem;
+}
+
+.innerCheck {
+  /* display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: black;
+  border: 1px solid #000;
+  /* border-radius: 3px; */
+  visibility: hidden;        
+}
+
+.quizBtns{
+  background: var(--light-color);
+}
+
+/**** Results-page *****/
+.results{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 3em;
+}
+
+.summaryBox{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 400px;
+  background: var(--dark-color);
+  border-radius: 15px;
+  color: white; 
+}
+
+.summaryBox h1 {
+  font-size: 40pt;
+}
+
+.totalScore{
+  color: var(--main-color);
+  font-size: 40pt;
+  margin: 0 0 1em 0;
+}
+
+.scorePercentage{
+  color: var(--main-color);
+  font-size: 42pt;
+  position: absolute
+}
+
+.summaryPane{
+  display: flex;
+  flex-direction: column;
+  width: 800px;
+  align-content: flex-start;
+  /* background: rgba(0,0,255,0.3); */
+}
+
+.summaryPane button{
+  width: 250px;
+}
+
+.summary{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 18pt;  
+}
+
+.summary div{
+  text-align: left;
+}
+
+.summary h1{
+  font-size: 40pt;
+  border-bottom: 1px solid var(--main-color);
+  width: 450px;
+  margin: 0 auto;
+  align-self: center;
+}
+
+
+
+.resultTime{
+  font-size: 24pt;
+  margin-bottom: 3em;
 }
