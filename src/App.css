@@ -92,7 +92,7 @@ body{
 
 code{
   font-family: 'Source Code Pro', monospace;
-  color: red;
+  /* color: red; */
 }
 
 h1, h2{
@@ -157,13 +157,15 @@ h1, h2{
 }
 
 label{
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: calc(25px + 1em) 1fr;
   align-items: center;
   justify-content: space-between;
 }
 
 .feedback{
-  align-self: center;
+  align-self: flex-end;
   visibility: hidden;
 }
 
@@ -200,7 +202,7 @@ input[type=radio]:checked + label>span {
   background-color: var(--box-before-color);
   border: 1px solid var(--border-box-color);
   border-radius: 15px;
-  margin-right: 1rem;
+  /* margin-right: 1em; */
 }
 
 .innerRadio {
@@ -252,6 +254,9 @@ input[type=checkbox]:checked + label>span {
 
 .quizBtns{
   background: var(--light-color);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 /**** Results-page *****/
@@ -315,7 +320,7 @@ input[type=checkbox]:checked + label>span {
   border-bottom: 1px solid var(--main-color);
   width: 450px;
   margin: 0 auto;
-  align-self: center;
+  align-self: flex-start;
 }
 
 

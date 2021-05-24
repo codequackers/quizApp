@@ -28,6 +28,8 @@ function Questiontext(props) {
 
     // Replace \n with <br> to get a linebreak.
     question = reactStringReplace(question, "\n", ()=><br key={Math.random()} />);
+    // Replace \t with <br> to get a linebreak.
+    question = reactStringReplace(question, "\t", ()=><span key={Math.random()}>&emsp;&emsp;&emsp;&emsp;&emsp;</span>);
 
     return (
         <div className='questiontext'>

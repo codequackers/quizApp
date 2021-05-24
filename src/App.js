@@ -4,24 +4,22 @@ import Questions from './components/Questions';
 import Results from './components/results/Results';
 
 function App(props) {
-
   const startTime = props.startTime;
 
   const [questions, setQuestions] = useState(null);
   const [quizState, setQuizState] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState({ index: 0, length: -1 });
-  const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [lockedQuestions, setLockedQuestions] = useState([]);
   const [score, setScore] = useState(0);
 
   //Fetch questions from server
   useEffect(() => {
     //Use this url for production build:
-    //const url = 'https://www.codequackers.no/OP3byXf6OptiTMlYslV3/questions.json';
+    const url = 'https://www.codequackers.no/OP3byXf6OptiTMlYslV3/questions.json';
 
     //Use this url for development:
     // Go to folder server and run npx serve to get this up and running.
-    const url = 'questions.json';
+    //const url = 'questions.json';
 
     const getQuestions = async () => {
       let res = await fetch(url);
@@ -39,8 +37,7 @@ function App(props) {
   if (quizState) {
     return (
       <div className="App">
-        <h1 className="MainHeader">Quiz</h1>
-
+        <h1 className="MainHeader"><span>Quiz</span></h1>
         {<Questions
           questions={questions ? questions : null}
           currentQuestion={currentQuestion}
@@ -49,8 +46,6 @@ function App(props) {
           setQuizState={setQuizState}
           lockedQuestions={lockedQuestions}
           setLockedQuestions={setLockedQuestions}
-          selectedAnswers={selectedAnswers}
-          setSelectedAnswers={setSelectedAnswers}
           score={score}
           setScore={setScore}
         />}

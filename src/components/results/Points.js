@@ -1,26 +1,15 @@
 function Points(props) {
 
-    // Check to see if score has any decimals
-    // Separate number in integer and decimal part
-    let intPart = Math.trunc(props.score);
-    let decimalPart = props.score - intPart;
+    // 1. Set number to fixed(1);
+    let myScore = parseFloat(props.score.toFixed(1));
+
+    // 2. Split in int and decimal
+    let intPart = Math.trunc(myScore);
+    let decimalPart = myScore - intPart;
+
+    // 3. If decimalPart > 0, set fixin = 1, else fixin = 0
     let fixin = 0;
-
-    /* 
-        We want rounding to at most 1 decimal point.
-        The "deciding" decimal will then be at the 2 decimal place, 0.0x. 
-        Consider a number a = 0.dxyz...
-        => a*100 = dx.yz...
-        => Math.trunc(a*100) = dx
-        Then, if dx > 0, set toFixed(1) else set toFixed(0);
-        Here a = decimalPart
-    */
-
-    if(Math.trunc(decimalPart*100) > 0){
-        fixin = 1;
-    } else {
-        fixin = 0;
-    }
+    decimalPart > 0 ? fixin = 1 : fixin = 0;
 
     return (
         <>

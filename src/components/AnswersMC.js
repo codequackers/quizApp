@@ -11,7 +11,7 @@ function AnswersMC(props) {
     const answers = shuffler([props.correct, ...props.incorrect], props.shuffleSeed);
 
     // State which contains the selected answer as a string
-    const [selected,  setSelected] = useState(null);
+    const [selected, setSelected] = useState(null);
 
     // Convert array of answer strings to html elements
     const displayAnswers = answers.map((answer) => {
@@ -28,7 +28,7 @@ function AnswersMC(props) {
         If the question is active OR it's not active AND selected, display
         the question with an input. Else, display just the div and label.
         */
-        if(isActive || (!isActive && selected === answer)){ // Test senere: mulig å fjerne !isActive?
+        if(isActive || (selected === answer)){ // Test senere: mulig å fjerne !isActive?
             return (
             <div key={answer}
                 className={'answer'}
@@ -73,7 +73,8 @@ function AnswersMC(props) {
                         return;
                     }}
                 >
-                    <span className='outerRadio'><span className='innerRadio'></span></span>{answer}
+                    <span className='outerRadio'><span className='innerRadio'></span></span>
+                    {reactAnswer}
                 </label>
                 <span className="feedback">Korrekt svar</span>
             </div>
@@ -92,6 +93,8 @@ function AnswersMC(props) {
             setSelected(null);
             currentAnswerElement.checked = false;
         } else {
+            console.log('AnswersMC');
+            console.log(answer);
             setSelected(answer);
             currentAnswerElement.checked = true;
         }

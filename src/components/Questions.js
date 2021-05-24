@@ -9,13 +9,12 @@ function Questions(props) {
 
     const questions = props.questions;
     const currentQuestion = props.currentQuestion;
-    const selectedAnswers = props.selectedAnswers;
-    const setSelectedAnswers = props.setSelectedAnswers;
     const score = props.score;
     const setScore = props.setScore;
 
     const [mcClasses, setMcClasses] = useState(null);
     const [maResults, setMaResults] = useState(null);
+    const [newAnswer, setNewAnswer] = useState(true);
 
     let currentScore = 0;
 
@@ -62,7 +61,6 @@ function Questions(props) {
                     setMcClasses('incorrect');
                 }
 
-                setSelectedAnswers([...selectedAnswers, elems[i].value]);
             }
         }
     }
@@ -158,12 +156,13 @@ function Questions(props) {
         } else {
             setScore(score + tempScore);
         }
-        
     }
 
     // Called when clicking the "Neste spørsmål"-button.
     function handleNavigation(direction) {
+        console.log('Handling answer');
         handleCheckAnswer();
+        console.log('Answer handled');
         setMcClasses(null);
         props.setCurrentQuestion({
             index: direction === 'next' ? (currentQuestion.index + 1) % questions.length : (currentQuestion.index - 1) % questions.length,
@@ -186,6 +185,8 @@ function Questions(props) {
                             shuffleSeed={props.shuffleSeed}
                             active={!props.lockedQuestions[currentQuestion.index]}
                             classes={mcClasses}
+                            newAnswer={newAnswer}
+                            setNewAnswer={setNewAnswer}
                         />
                     </div>
                     <Quizbuttons

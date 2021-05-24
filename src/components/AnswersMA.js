@@ -93,6 +93,7 @@ function AnswersMA(props) {
             setSelected(updatedSelection);
         } else {
             setSelected([...selected, answer]);
+            
         }
     }
 

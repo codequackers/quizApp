@@ -1,7 +1,6 @@
 function Summary(props) {
     const duration = props.duration;
-    console.log(duration);
-
+    
     let hoursDEC = duration / (1000 * 60 * 60);
     let hoursINT = Math.trunc(hoursDEC);
 
@@ -20,8 +19,8 @@ function Summary(props) {
             <h1>Quiz om variabler</h1>
             <div>
                 <p className='resultTime'><span id='quizTimeSpent'>{durationString}</span></p>
-                <p className='resultFinal'>Du må ha et resultat på minimum 6 korrekte svar for å gå videre i kurset.</p>
-                <p className='resultNext'>Ta testen på nytt nedefor.</p>
+                <p>Testen er fullført.</p>
+                <p>Du kan enten ta den på nytt eller fortsette til neste kapittel.</p>
             </div>
 
         </div>

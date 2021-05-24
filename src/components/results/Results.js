@@ -5,22 +5,19 @@ import Percentage from './Percentage';
 
 function Results(props){
 
-    const duration = props.duration;
-
-    console.log('Final score: ');
-    console.log(props.finalScore/props.maxScore);
     return(
         <div className='results'>
             <div className='summaryBox'>
-                <Points score={props.finalScore} maxScore={props.maxScore}/>
-                <Percentage score={props.finalScore} maxScore={props.maxScore}/>
-                
+                <Points 
+                    score={props.finalScore} 
+                    maxScore={props.maxScore}/>
+                <Percentage 
+                    score={props.finalScore} 
+                    maxScore={props.maxScore}/>    
             </div>
             <div className='summaryPane'>
                 <Summary 
-                    score={props.finalScore} 
-                    maxScore={props.maxScore}
-                    duration={duration}    
+                    duration={props.duration}    
                 />
                 <SummaryNav />
             </div>
